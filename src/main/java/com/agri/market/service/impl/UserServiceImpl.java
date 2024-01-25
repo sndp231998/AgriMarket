@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import com.agri.market.Repo.UserRepo;
 import com.agri.market.entities.User;
 import com.agri.market.exception.ResourceNotFoundException;
+import com.agri.market.playloads.ApiResponse;
+import com.agri.market.playloads.LoginDto;
 import com.agri.market.playloads.UserDto;
 import com.agri.market.service.UserService;
 
@@ -68,6 +70,22 @@ public class UserServiceImpl implements UserService{
 		return userDtos;
 	}
 
+	
+//	@Override
+//	public UserDto getUserByEmailAndPassword(String email, String password) {
+//		User user=this.userRepo.getUserByEmailAndPassword(email, password);
+//		if(user!=null) {
+//			 UserDto userDto = modelMapper.map(user, UserDto.class);
+//	            return userDto;	
+//		}
+//		else {
+//			System.out.println("User not found");
+//			return null;
+//		}
+//	}
+
+	
+	
 	@Override
 	public void deleteUser(Integer userId) {
 		User user = this.userRepo.findById(userId)
@@ -104,7 +122,23 @@ public class UserServiceImpl implements UserService{
 		return this.modelMapper.map(newUser, UserDto.class);
 	}
 
+	@Override
+	public ApiResponse login(LoginDto loginDto) {
+		 User user = userRepo.findByEmail(loginDto.getEmail());
+	        if (user == null) {
+	            throw new RuntimeException((loginDto.getPassword()));
+	            }else
+	                if (user.getPassword().equals(loginDto.getPassword())) {
+	            return new ApiResponse("Login Success",true);
+	        }else
+	        throw new RuntimeException("Password mismatch.");
+
+	        }
+
+	}
+	
 
 
 
-}
+
+
