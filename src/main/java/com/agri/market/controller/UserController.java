@@ -25,9 +25,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.agri.market.playloads.ApiResponse;
+import com.agri.market.playloads.LoginDto;
 import com.agri.market.playloads.UserDto;
 import com.agri.market.service.FileService;
 import com.agri.market.service.UserService;
+
 
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
@@ -52,6 +55,11 @@ public class UserController {
 		UserDto createUserDto = this.userService.createUser(userDto);
 		return new ResponseEntity<>(createUserDto, HttpStatus.CREATED);
 	}
+
+	
+	
+	
+	
 	// PUT- update user
 
 		@PutMapping("/{userId}")
@@ -71,6 +79,38 @@ public class UserController {
 		public ResponseEntity<UserDto> getSingleUser(@PathVariable Integer userId) {
 			return ResponseEntity.ok(this.userService.getUserById(userId));
 		}
+		
+		
+		
+
+	    @PostMapping("/login")
+	    public ApiResponse login(@RequestBody LoginDto loginDto){
+	        return userService.login(loginDto);
+	    }
+		 
+//		@PostMapping("/login")
+//	    public ResponseEntity<UserDto> loginUser(@Valid @RequestBody UserDto userDto) {
+//	        try {
+//	            UserDto loggedInUser = userService.getUserByEmailAndPassword(userDto.getEmail(), userDto.getPassword());
+//
+//	            if (loggedInUser != null) {
+//	            	 String errorMessage = "User found";
+//	                return new ResponseEntity<>(loggedInUser, HttpStatus.OK);
+//	            } else {
+//	            	 String errorMessage = "User not found";
+//	                return new ResponseEntity<>(HttpStatus.NOT_FOUND); // User not found
+//	            }
+//	        } catch (Exception e) {
+//	            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); // Handle other exceptions
+//	        }
+	    }	
+		
+		
+		
+		
+		
+		
+		
 //		@PostMapping("/image/upload/{userId}")
 //		public ResponseEntity<UserDto> uploadImage(@RequestParam("image") MultipartFile image,
 //		                                               @PathVariable Integer userId) throws IOException {
@@ -112,7 +152,7 @@ public class UserController {
 //		    }
 //		}
 
-}
+
 
 
 //----------------------------------------------------
