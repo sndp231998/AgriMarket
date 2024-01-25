@@ -129,7 +129,10 @@ public class UserServiceImpl implements UserService{
 	            throw new RuntimeException((loginDto.getPassword()));
 	            }else
 	                if (user.getPassword().equals(loginDto.getPassword())) {
-	            return new ApiResponse("Login Success",true);
+	                	  int userId = user.getId();
+	                	  String name=user.getName();
+	                	  System.out.print(name);
+	                	return new ApiResponse("Login Success",true, name, userId);
 	        }else
 	        throw new RuntimeException("Password mismatch.");
 

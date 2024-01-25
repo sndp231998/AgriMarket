@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.agri.market.playloads.EquipmentDto;
 import com.agri.market.playloads.MarketDto;
 import com.agri.market.service.EquipmentService;
-
+//123
 @RestController
 @RequestMapping("/api/v1/")
 public class EquipmentController {
