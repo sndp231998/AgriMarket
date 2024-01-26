@@ -99,7 +99,7 @@ public class FileController {
 	        } else {
 	        
 	            return new ResponseEntity<>(new FileResponse(null,
-	            		"Image is not reconized !!!"
+	            		"No issues detected !!!"
 	            		
 	            		), HttpStatus.BAD_REQUEST);
 	        }

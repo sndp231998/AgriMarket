@@ -125,14 +125,16 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public ApiResponse login(LoginDto loginDto) {
 		 User user = userRepo.findByEmail(loginDto.getEmail());
+		 
 	        if (user == null) {
 	            throw new RuntimeException((loginDto.getPassword()));
 	            }else
 	                if (user.getPassword().equals(loginDto.getPassword())) {
 	                	  int userId = user.getId();
 	                	  String name=user.getName();
+	                	  String usertype=user.getUserType();
 	                	  System.out.print(name);
-	                	return new ApiResponse("Login Success",true, name, userId);
+	                	return new ApiResponse("Login Success ",true, name, userId, usertype);
 	        }else
 	        throw new RuntimeException("Password mismatch.");
 

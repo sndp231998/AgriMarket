@@ -16,6 +16,7 @@ public class ApiResponse {
     private boolean success;
     private String name;
     private Integer id;
+    private String useType;
     
     
 
