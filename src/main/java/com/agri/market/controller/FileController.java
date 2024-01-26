@@ -57,49 +57,56 @@ public class FileController {
 	        if (imageWidth == leafMinerWidth && imageHeight == leafMinerHeight) {
 	            fileName = this.fileService.uploadImage(path, image);
 	            return new ResponseEntity<>(new FileResponse(fileName,
-	            		"Problem: Leaf Miner"
-	            		+ "Solution are:"
-	            		+ "1.Insecticidal Sprays:"
-	            		+ "Use insecticides containing Spinosad or neem oil. Spray affected"
-	            		+ "plants, targeting the undersides of leaves where the larvae feed. Repeat applications "
-	            		+ "every 7-10 days as needed."
-	            		+ "2. Manual Removal: "
-	            		+ "Gently squish or remove affected leaves to eliminate larvae. "
+	            		"<h2>Problem:</h2> Leaf Miner"
+	            		+ "<h1>Solution are:<h1>"
+	            		+ "<b>1.Insecticidal Sprays:<b><br>"
+	            		+ "Use insecticides containing Spinosad or neem oil.<br> "
+	            		+ "Spray affected plants,targeting the undersides of leaves where the larvae feed<br>"
+	            		+ "  Repeat applicationsevery 7-10 days as needed.<br><br> "
+	         
+	            		+ "<b>2. Manual Removal:<b><br> "
+	            		+ "Gently squish or remove affected leaves to eliminate larvae.<br> "
 	            		+ "Dispose of the infested material to prevent further spread."
 	            		
 	            		), HttpStatus.OK);
 	        } else if (imageWidth == whiteFliesWidth && imageHeight == whiteFliesHeight) {
 	            fileName = this.fileService.uploadImage(path, image);
 	            return new ResponseEntity<>(new FileResponse(fileName,
-	            		"Problem:White Flies"
-	            		+ "Small, flying insects that leave a sticky residue on leaves, leading to mold"
-	            		+ " growth and yellowing "
-	            		+ "Solution are: "
-	            		+ "1.Insecticidal Soap or Neem Oil:\n"
-	            		+ "Apply insecticidal soap or neem oil to the affected plants.\n"
-	            		+ " These substances disrupt the whiteflies' feeding and cause them to perish.\n"
-	            		+ "2. Yellow Sticky Traps:"
-	            		+ "Hang yellow sticky traps near your plants to attract and capture adult whiteflies. "
-	            		+ "This helps reduce their population."
+	            		"<h2>Problem:<h2> White Flies<br>"
+	            		+ "Small, flying insects that leave a sticky residue on leaves,<br> "
+	            		+ "leading to mold growth and yellowing<br>"
+	            		
+	            		+ "<b>Solution are:</b><br>"
+	            		+ "1.Insecticidal Soap or Neem Oil:<br>"
+	            		+ "Apply insecticidal soap or neem oil to the affected plants.<br>"
+	            		+ " These substances disrupt the whiteflies' <br>"
+	            		+ "feeding and cause them to perish.<br>"
+	            		+ "<b> 2. Yellow Sticky Traps: </b><br>"
+	            		+ "Hang yellow sticky traps near your plants to<br>"
+	            		+ " attract and capture adult whiteflies.<br> "
+	            		+ "This helps reduce their population.<br>"
 	            		
 	            		), HttpStatus.OK);
 	        } else if (imageWidth == viralInfectedPlantWidth && imageHeight == viralInfectedPlantHeight) {
 	            fileName = this.fileService.uploadImage(path, image);
 	            return new ResponseEntity<>(new FileResponse(fileName,
-	            		"Problem: Viral Infected <br> "
-	            		+ "There is no cure for viral infections in plants,<br>"
-	            		+ "so management strategies focus on preventing the spread of the virus<br> "
-	            		+ "and minimizing its impact. Here is some general measures:<br>"
-	            		+ "1. Remove Infected Plants:"
+	            		"<h2>Problem: Viral Infected</h2>"
+	            		+ "<p>There is no cure for viral infections in plants, so management strategies focus on preventing the spread of the virus and"
+	            		+ " minimizing its impact. Here are some general measures:</p>\r\n"
+	            		+ "\r\n"
+	            		+"<ol>"
+	            		+"<li>"
+	           
+	            		+ "<br>1. Remove Infected Plants:<br>"
 	            		+ "Promptly remove and destroy plants showing viral symptoms to <br>"
 	            		+ "prevent the spread of the virus to healthy plants."
-	            		
+	            		+"</li> </ol>"
 	            		
 	            		), HttpStatus.OK);
 	        } else {
 	        
 	            return new ResponseEntity<>(new FileResponse(null,
-	            		"No issues detected !!!"
+	            		"<h1>No issues detected !!!<h1>"
 	            		
 	            		), HttpStatus.BAD_REQUEST);
 	        }
