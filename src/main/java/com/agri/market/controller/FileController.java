@@ -160,13 +160,13 @@ public class FileController {
 			else {
 	        
 	            return new ResponseEntity<>(new FileResponse(null,
-	            		"<h1> invalid image !!!<h1>"
+	            		"<h1>No issue detected !!!<h1>"
 	            		
 	            		), HttpStatus.BAD_REQUEST);
 	        }
 	    } catch (IOException e) {
 	        e.printStackTrace();
-	        return new ResponseEntity<>(new FileResponse(null, "Error reading image dimensions"), HttpStatus.INTERNAL_SERVER_ERROR);
+	        return new ResponseEntity<>(new FileResponse(null, "Error reading image "), HttpStatus.INTERNAL_SERVER_ERROR);
 	    }
 	}
 
