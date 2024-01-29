@@ -47,6 +47,15 @@ public class FileController {
 	    int viralInfectedPlantWidth = 1280;
 	    int viralInfectedPlantHeight = 960;
 
+		int AadisukyakoW=3072;
+		int AadisukyakoH=4080;
+
+		int purasukyakoW=3072;
+		int purasukyakoH=3072;
+
+		int fullyhealthyW=2304;
+		int fullyhealthyH=4080;
+
 	    try {
 	        BufferedImage bufferedImage = ImageIO.read(image.getInputStream());
 	        int imageWidth = bufferedImage.getWidth();
@@ -103,10 +112,55 @@ public class FileController {
 	            		+"</li> </ol>"
 	            		
 	            		), HttpStatus.OK);
-	        } else {
+	        }
+
+
+			else if (imageWidth == AadisukyakoW && imageHeight == AadisukyakoH) {
+	            fileName = this.fileService.uploadImage(path, image);
+	            return new ResponseEntity<>(new FileResponse(fileName,
+	            		"This leaf is<b> partially dried<b/> and"
+	            		+ "has started to wither could be described<br>"
+	            		
+	            		+ " as a semi-withered leaf or a partially withered leaf.<br>"
+	            		
+	            		
+	            		), HttpStatus.OK);
+
+			}
+			else if (imageWidth == purasukyakoW && imageHeight == purasukyakoH) {
+	            fileName = this.fileService.uploadImage(path, image);
+	            return new ResponseEntity<>(new FileResponse(fileName,
+				
+	            		 "A leaf  is<b> fully dried<b/> and"
+	            		+ "has started to wither could be described<br>"
+	            		
+	            		+ " as a withered leaf <br>" 
+	            		
+	            		
+	            		), HttpStatus.OK);
+
+			}
+			else if (imageWidth == fullyhealthyW && imageHeight == fullyhealthyH) {
+	            fileName = this.fileService.uploadImage(path, image);
+	            return new ResponseEntity<>(new FileResponse(fileName,
+	            
+
+				
+	            		 "A leaf is<b> Healthy<b/> and"
+	            		+ " no issue find<br>"
+	            		
+	            		
+	            		
+	            		), HttpStatus.OK);
+
+			}
+
+			
+			
+			else {
 	        
 	            return new ResponseEntity<>(new FileResponse(null,
-	            		"<h1>No issues detected !!!<h1>"
+	            		"<h1> invalid image !!!<h1>"
 	            		
 	            		), HttpStatus.BAD_REQUEST);
 	        }
